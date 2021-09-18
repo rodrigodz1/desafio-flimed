@@ -1,6 +1,7 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-
 import "../styles/global.css";
+
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { storeWrapper } from "../store";
 
 const theme = {
   colors: {
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
@@ -32,3 +33,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default storeWrapper.withRedux(App);

@@ -1,0 +1,3 @@
+// *** USER ***
+export const SET_FAVORITES = "SET_FAVORITES";
+export const REMOVE_FAVORITES = "REMOVE_FAVORITES";

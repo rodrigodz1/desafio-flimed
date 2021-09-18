@@ -50,6 +50,10 @@ export const PlanetsDiv = styled.div`
         background-color: ${({ theme }) => theme.colors.primary};
         color: white;
       }
+      &:focus {
+        background-color: ${({ theme }) => theme.colors.primary};
+        color: white;
+      }
     }
   }
 `;
@@ -71,13 +75,37 @@ export const PeopleDiv = styled.div`
     background-color: ${({ theme }) => theme.colors.gradient};
     border-radius: 5px;
     cursor: pointer;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: white;
+    }
+    &:focus {
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: white;
+    }
   }
   div {
     font-size: 22px;
     font-weight: bold;
+    padding: 10px;
   }
   aside {
     display: flex;
     column-gap: 10px;
+  }
+`;
+
+export const FavoritesUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  list-style-type: none;
+  border: none;
+  border-radius: 5px;
+  margin: 1% 12%;
+  background-color: ${({ theme }) => theme.colors.paleblue};
+  font-weight: 700;
+  li {
+    font-size: 15px;
   }
 `;

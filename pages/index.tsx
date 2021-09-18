@@ -1,13 +1,26 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { Main, Container, PlanetsDiv, PeopleDiv } from "../styles/styled";
+import { favoriteUpdate, favoriteReset } from "../store/actions/favorites/";
+import {
+  Main,
+  Container,
+  PlanetsDiv,
+  PeopleDiv,
+  FavoritesUl,
+} from "../styles/styled";
 const axios = require("axios");
 
 export default function Home() {
-  //pega todos os planetas em uma única request
   const [planets, setPlanets] = useState([]);
   const [pessoas, setPessoas] = useState([]);
   const [currentPlanet, setCurrentPlanet] = useState("");
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
+  const [showFav, setShowFav] = useState(false);
+
+  const favs = useSelector((state) => state.favorites.favorites);
+  // console.log(favs[0]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -52,6 +65,15 @@ export default function Home() {
     }
   }
 
+  function favoritar() {
+    if (!favs.includes(currentPlanet)) {
+      // setFavorites((favorites) => [...favorites, currentPlanet]);
+      dispatch(favoriteUpdate(currentPlanet));
+    } else {
+      console.log("Favorito já adicionado");
+    }
+  }
+
   return (
     <Main>
       <span>StarWars - Pessoas e suas terras natais</span>
@@ -84,17 +106,27 @@ export default function Home() {
             {currentPlanet ? currentPlanet : "Clique em um personagem ao lado"}
           </div>
           <aside>
-            <button onClick={() => setCurrentPlanet("")}>Limpar</button>
             <button
-              onClick={() =>
-                setFavorites((favorites) => [...favorites, currentPlanet])
-              }
+              onClick={() => {
+                setCurrentPlanet("");
+                // setFavorites([""]);
+                dispatch(favoriteReset());
+              }}
             >
-              Favoritar
+              Limpar
             </button>
+            <button onClick={() => favoritar()}>Favoritar</button>
+            <button onClick={() => setShowFav(!showFav)}>Ver favoritos</button>
           </aside>
         </PeopleDiv>
       </Container>
+      {showFav ? (
+        <FavoritesUl>
+          {favs.map((favorite, i) => {
+            return <li key={i}>{favorite}</li>;
+          })}
+        </FavoritesUl>
+      ) : null}
     </Main>
   );
 }
