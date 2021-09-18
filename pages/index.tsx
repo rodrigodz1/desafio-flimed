@@ -8,6 +8,7 @@ import {
   PeopleDiv,
   FavoritesUl,
 } from "../styles/styled";
+import { RootState } from "../store/reducers";
 const axios = require("axios");
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
   // const [favorites, setFavorites] = useState([]);
   const [showFav, setShowFav] = useState(false);
 
-  const favs = useSelector((state) => state.favorites.favorites);
+  const favs = useSelector((state: RootState) => state.favorites.favorites);
   // console.log(favs[0]);
 
   const dispatch = useDispatch();
