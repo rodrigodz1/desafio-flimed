@@ -11,6 +11,20 @@ export const Main = styled.main`
     font-weight: 700;
   }
 
+  @media (max-width: 1023px) {
+    span {
+      font-size: 30px;
+    }
+    div {
+      div {
+        span {
+          margin: 0;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
   @media (max-width: 720px) {
     span {
       font-size: 25px;
@@ -56,14 +70,12 @@ export const PlanetsDiv = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 150px;
-    row-gap: 5px;
+    gap: 5px;
     button {
       cursor: pointer;
-      padding: 3px 0;
+      padding: 3px 1px;
       border: none;
       border-radius: 5px;
-      // background-color: ${({ theme }) => theme.colors.primary};
-      // color: white;
       font-weight: 500;
       &:hover {
         background-color: ${({ theme }) => theme.colors.primary};
@@ -72,6 +84,19 @@ export const PlanetsDiv = styled.div`
       &:focus {
         background-color: ${({ theme }) => theme.colors.primary};
         color: white;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    align-items: center;
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      button {
+        font-size: 16px;
+        padding: 1px;
       }
     }
   }
@@ -128,6 +153,10 @@ export const PeopleDiv = styled.div`
     column-gap: 10px;
   }
 
+  @media (max-width: 1023px) {
+    padding: 5px 20px;
+  }
+
   @media (max-width: 720px) {
     margin: 0;
     width: 100%;
@@ -154,5 +183,9 @@ export const FavoritesUl = styled.ul`
   font-weight: 700;
   li {
     font-size: 15px;
+  }
+
+  @media (max-width: 720px) {
+    margin: 3% 12%;
   }
 `;
