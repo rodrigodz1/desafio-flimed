@@ -10,6 +10,20 @@ export const Main = styled.main`
     margin: 50px 0 25px 0;
     font-weight: 700;
   }
+
+  @media (max-width: 720px) {
+    span {
+      font-size: 25px;
+    }
+    div {
+      div {
+        span {
+          margin: 0;
+          font-size: 25px;
+        }
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -23,6 +37,11 @@ export const Container = styled.div`
     font-size: 50px;
   }
   column-gap: 25px;
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const PlanetsDiv = styled.div`
@@ -53,6 +72,21 @@ export const PlanetsDiv = styled.div`
       &:focus {
         background-color: ${({ theme }) => theme.colors.primary};
         color: white;
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    align-items: center;
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 0;
+      button {
+        font-size: 16px;
+        padding: 4px;
+        font-weight: 700;
       }
     }
   }
@@ -92,6 +126,19 @@ export const PeopleDiv = styled.div`
   aside {
     display: flex;
     column-gap: 10px;
+  }
+
+  @media (max-width: 720px) {
+    margin: 0;
+    width: 100%;
+    row-gap: 5px;
+    aside {
+      button {
+        padding: 0 2px;
+        margin: 5px;
+        font-size: 16px;
+      }
+    }
   }
 `;
 
