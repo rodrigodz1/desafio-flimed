@@ -2,6 +2,7 @@ import "../styles/global.css";
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { storeWrapper } from "../store";
+import Head from "next/head";
 
 const theme = {
   colors: {
@@ -26,6 +27,13 @@ const GlobalStyle = createGlobalStyle`
 function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <title>Desafio - Flimed</title>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
+      </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />

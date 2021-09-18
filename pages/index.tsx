@@ -106,16 +106,33 @@ export default function Home() {
           </div>
           <aside>
             <button
+              className="clean"
               onClick={() => {
                 setCurrentPlanet("");
                 // setFavorites([""]);
                 dispatch(favoriteReset());
               }}
             >
+              <span className="material-icons">cleaning_services</span>
               Limpar
             </button>
-            <button onClick={() => favoritar()}>Favoritar</button>
-            <button onClick={() => setShowFav(!showFav)}>Ver favoritos</button>
+            <button className="favorite" onClick={() => favoritar()}>
+              <span className="material-icons">star</span>
+              Favoritar
+            </button>
+            <button onClick={() => setShowFav(!showFav)}>
+              {showFav ? (
+                <>
+                  <span className="material-icons">visibility</span>
+                  Esconder favoritos
+                </>
+              ) : (
+                <>
+                  <span className="material-icons">visibility_off</span>
+                  Mostrar favoritos
+                </>
+              )}
+            </button>
           </aside>
         </PeopleDiv>
       </Container>

@@ -129,6 +129,24 @@ export const PeopleDiv = styled.div`
   border: none;
   border-radius: 15px;
   button {
+    display: flex;
+    align-items: center;
+    &.favorite {
+      span {
+        color: yellow;
+      }
+    }
+    &.clean {
+      span {
+        color: gray;
+      }
+    }
+    span {
+      margin: 0;
+      padding: 0;
+      font-size: 25px;
+      color: black;
+    }
     padding: 5px 10px;
     font-size: 18px;
     border: 2px solid blue;
