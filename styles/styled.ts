@@ -112,6 +112,7 @@ export const PlanetsDiv = styled.div`
         font-size: 16px;
         padding: 4px;
         font-weight: 700;
+        background-color: white;
       }
     }
   }

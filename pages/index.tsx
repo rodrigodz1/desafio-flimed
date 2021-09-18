@@ -19,7 +19,6 @@ export default function Home() {
   const [showFav, setShowFav] = useState(false);
 
   const favs = useSelector((state: RootState) => state.favorites.favorites);
-  // console.log(favs[0]);
 
   const dispatch = useDispatch();
 
@@ -68,7 +67,6 @@ export default function Home() {
 
   function favoritar() {
     if (!favs.includes(currentPlanet)) {
-      // setFavorites((favorites) => [...favorites, currentPlanet]);
       dispatch(favoriteUpdate(currentPlanet));
     } else {
       console.log("Favorito já adicionado");
