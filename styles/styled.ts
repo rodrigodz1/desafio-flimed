@@ -172,19 +172,24 @@ export const PeopleDiv = styled.div`
   }
   aside {
     display: flex;
-    column-gap: 10px;
+    column-gap: 6px;
   }
 
   @media (max-width: 1023px) {
-    padding: 5px 20px;
+    padding: 5px 35px;
+    button {
+      background: white;
+    }
   }
 
   @media (max-width: 720px) {
     margin: 0;
+    padding: 0 35px;
     width: 100%;
     row-gap: 5px;
     aside {
       button {
+        background: white;
         padding: 0 2px;
         margin: 5px;
         font-size: 16px;
