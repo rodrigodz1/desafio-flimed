@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { favoriteUpdate, favoriteReset } from "../store/actions/favorites/";
 import {
   Main,
@@ -21,6 +21,8 @@ export default function Home() {
   const favs = useSelector((state: RootState) => state.favorites.favorites);
 
   const dispatch = useDispatch();
+
+  const myRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -78,7 +80,7 @@ export default function Home() {
       <span>StarWars - Pessoas e suas terras natais</span>
       <Container>
         {!planets.length || !pessoas.length ? (
-          "Aguarde, carregando dados da API..."
+          <span>Aguarde, carregando dados da API...</span>
         ) : (
           <PlanetsDiv>
             <span>Selecione um personagem.</span>
@@ -120,7 +122,12 @@ export default function Home() {
               <span className="material-icons">star</span>
               Favoritar
             </button>
-            <button onClick={() => setShowFav(!showFav)}>
+            <button
+              onClick={() => {
+                setShowFav(!showFav);
+                myRef.current.scrollIntoView();
+              }}
+            >
               {showFav ? (
                 <>
                   <span className="material-icons">visibility</span>
@@ -143,6 +150,7 @@ export default function Home() {
           })}
         </FavoritesUl>
       ) : null}
+      <footer ref={myRef}></footer>
     </Main>
   );
 }

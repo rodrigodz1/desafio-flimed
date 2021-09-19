@@ -161,6 +161,9 @@ export const PeopleDiv = styled.div`
       background-color: ${({ theme }) => theme.colors.primary};
       color: white;
     }
+    transition-property: background;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
   }
   div {
     font-size: 22px;
