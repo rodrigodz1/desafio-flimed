@@ -3,6 +3,7 @@ import "../styles/global.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { storeWrapper } from "../store";
 import Head from "next/head";
+import { AppProps } from "next/app";
 
 const theme = {
   colors: {
@@ -24,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>

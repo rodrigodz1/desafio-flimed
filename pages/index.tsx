@@ -9,16 +9,28 @@ import {
   FavoritesUl,
 } from "../styles/styled";
 import { RootState } from "../store/reducers";
+import { AxiosError, AxiosResponse } from "axios";
 const axios = require("axios");
 
+type IPessoa = {
+  name: string;
+  homeworld: string;
+};
+
+type IPlanet = {
+  url: string;
+  name: string;
+};
+
 export default function Home() {
-  const [planets, setPlanets] = useState([]);
-  const [pessoas, setPessoas] = useState([]);
+  const [planets, setPlanets] = useState<IPlanet[]>([]);
+  const [pessoas, setPessoas] = useState<IPessoa[]>([]);
   const [currentPlanet, setCurrentPlanet] = useState("");
-  // const [favorites, setFavorites] = useState([]);
   const [showFav, setShowFav] = useState(false);
 
-  const favs = useSelector((state: RootState) => state.favorites.favorites);
+  const favs: string[] = useSelector(
+    (state: RootState) => state.favorites.favorites
+  );
 
   const dispatch = useDispatch();
 
@@ -27,11 +39,11 @@ export default function Home() {
   useEffect(() => {
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}/planets`)
-      .then(function (response) {
+      .then(function (response: AxiosResponse) {
         // handle success
         setPlanets(response.data.results);
       })
-      .catch(function (error) {
+      .catch(function (error: AxiosError) {
         // handle error
         console.log(error);
       })
@@ -41,10 +53,10 @@ export default function Home() {
 
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}/people`)
-      .then(function (response) {
+      .then(function (response: AxiosResponse) {
         setPessoas(response.data.results);
       })
-      .catch(function (error) {
+      .catch(function (error: AxiosError) {
         // handle error
         console.log(error);
       })
@@ -53,9 +65,9 @@ export default function Home() {
       });
   }, []);
 
-  function showPpl(pessoa) {
+  function showPpl(pessoa: IPessoa) {
     let homeland = "";
-    planets.forEach((planet) => {
+    planets.forEach((planet: IPlanet) => {
       if (planet.url == pessoa.homeworld) {
         setCurrentPlanet(`O planeta natal de ${pessoa.name} é ${planet.name}.`);
         homeland = planet.name;
@@ -145,7 +157,7 @@ export default function Home() {
       </Container>
       {showFav ? (
         <FavoritesUl>
-          {favs.map((favorite, i) => {
+          {favs.map((favorite: string, i: number) => {
             return <li key={i}>{favorite}</li>;
           })}
         </FavoritesUl>
