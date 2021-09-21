@@ -8,4 +8,4 @@ If you want to run it locally, create a ```.env.local``` file on the root direct
 - Run
 ```yarn dev```
 
-Check ```http:localhost:3000```
+Check ```http://localhost:3000```
