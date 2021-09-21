@@ -1,11 +1,12 @@
+import { PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { SET_FAVORITES, REMOVE_FAVORITES } from "../../actions";
 
 const initialState = {
-  favorites: [],
+  favorites: <string[]>[],
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: PayloadAction<any>) => {
   switch (action.type) {
     case HYDRATE:
       return { ...state, ...action.payload.favorite };
